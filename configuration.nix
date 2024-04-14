@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -103,6 +104,7 @@
     curl
     git
     neovim
+    nixpkgs-fmt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
