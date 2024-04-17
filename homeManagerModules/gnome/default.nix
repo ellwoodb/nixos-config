@@ -9,7 +9,7 @@
       favorite-apps = [
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
-        "org.gnome.Terminal.desktop"
+        "org.gnome.Console.desktop"
         "org.gnome.TextEditor.desktop"
         "code.desktop"
         "cider.desktop"
@@ -29,6 +29,7 @@
         "blur-my-shell@aunetx"
         "caffeine@patapon.info"
         "tailscale@joaophi.github.com"
+        "just-perfection-desktop@just-perfection"
       ];
     };
   };
@@ -39,6 +40,7 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.tailscale-qs
     gnomeExtensions.removable-drive-menu
+    gnomeExtensions.just-perfection
   ];
 
 }

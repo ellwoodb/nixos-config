@@ -23,6 +23,12 @@
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = (_: true);
+        };
+      };
       nixosConfigurations = {
         desktop = lib.nixosSystem {
           inherit system;
@@ -35,7 +41,10 @@
       };
       homeConfigurations = {
         matthias = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           extraSpecialArgs = {
             inherit inputs;
             inherit pkgs-unstable;
