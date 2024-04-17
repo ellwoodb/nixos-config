@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, ... }:
+{ inputs, config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nixosModules
     ];
 
   # Bootloader.
@@ -46,9 +47,8 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  programs.dconf.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -93,6 +93,8 @@
         vscode
         bitwarden
         prusa-slicer
+        prismlauncher
+        inputs.lemonake.packages.${pkgs.system}.alvr
       ])
 
       ++
@@ -134,13 +136,7 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  services.tailscale = {
-    enable = true;
-    extraUpFlags = [
-      "--ssh"
-      "--accept-dns"
-    ];
-  };
+  programs.java.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

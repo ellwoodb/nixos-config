@@ -12,6 +12,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lemonake.url = "github:passivelemon/lemonake";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -26,6 +27,7 @@
         desktop = lib.nixosSystem {
           inherit system;
           specialArgs = {
+            inherit inputs;
             inherit pkgs-unstable;
           };
           modules = [ ./configuration.nix ];

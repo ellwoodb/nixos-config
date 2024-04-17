@@ -1,6 +1,9 @@
 { config, pkgs, nixpkgs-unstable, inputs, ... }:
 
 {
+  imports = [
+    ./homeManagerModules
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matthias";
@@ -51,50 +54,6 @@
     # '';
   };
 
-  programs.git = {
-    enable = true;
-    userName = "ellwoodb";
-    userEmail = "matthias@ellwoodb.de";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-  };
-
-  programs.firefox = {
-    enable = true;
-    policies = {
-      "SearchEngines" = {
-        "Default" = "Brave";
-        "PreventInstalls" = true;
-      };
-    };
-    profiles = {
-      default = {
-        id = 0;
-        name = "default";
-        search = {
-          force = true;
-          default = "Brave";
-          order = [ "Brave" "Google" ];
-          engines = {
-            "Brave" = {
-              urls = [{ template = "https://search.brave.com/search?q={searchTerms}"; }];
-              iconUpdateURL = "https://nixos.wiki/favicon.png";
-              updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = [ "@brave" ];
-            };
-          };
-        };
-        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-          bitwarden
-          ublock-origin
-          darkreader
-          tabliss
-        ];
-      };
-    };
-  };
-
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at
@@ -111,7 +70,7 @@
   #  /etc/profiles/per-user/matthias/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Let Home Manager install and manage itself.
