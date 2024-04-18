@@ -6,6 +6,5 @@
     ./git
     ./gnome
     ./hyprland
-    ./vscode
   ];
 }
