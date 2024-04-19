@@ -32,6 +32,9 @@
         "just-perfection-desktop@just-perfection"
       ];
     };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
+    };
   };
   home.packages = with pkgs; [
     # Extensions

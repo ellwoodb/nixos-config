@@ -84,6 +84,7 @@
     isNormalUser = true;
     description = "Matthias";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    shell = pkgs.zsh;
     packages =
       (with pkgs; [
         firefox
@@ -92,6 +93,7 @@
         prusa-slicer
         prismlauncher
         inputs.lemonake.packages.${pkgs.system}.alvr
+        webcord
       ])
 
       ++
@@ -136,6 +138,8 @@
   networking.firewall.enable = false;
 
   programs.java.enable = true;
+
+  programs.zsh.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
