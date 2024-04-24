@@ -36,8 +36,8 @@
       button-layout = "appmenu:minimize,maximize,close";
     };
     "org/gnome/desktop/background" = {
-      picture-uri = "file://./wallpapers/desert.jpg";
-      picture-uri-dark = "file://./wallpapers/desert.jpg";
+      picture-uri = "file:///home/matthias/.dotfiles/wallpapers/desert.jpg";
+      picture-uri-dark = "file:///home/matthias/.dotfiles/wallpapers/desert.jpg";
     };
   };
   home.packages = with pkgs; [
