@@ -13,14 +13,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lemonake.url = "github:passivelemon/lemonake";
+    ollama.url = "github:abysssol/ollama-flake";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ollama, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      ollama-cuda = ollama.packages.${system}.cuda.override { cudaGcc = pkgs.gcc11; };
     in
     {
       nixpkgs = {

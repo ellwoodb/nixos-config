@@ -94,6 +94,8 @@
         prismlauncher
         inputs.lemonake.packages.${pkgs.system}.alvr
         webcord
+        sidequest
+        filezilla
       ])
 
       ++

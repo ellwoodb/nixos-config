@@ -4,6 +4,7 @@
   imports = [
     ./cider
     ./nvidia
+    ./ollama
     ./steam
     ./tailscale
     ./gnome

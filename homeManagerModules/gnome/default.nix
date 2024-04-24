@@ -35,6 +35,10 @@
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
     };
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://./wallpapers/desert.jpg";
+      picture-uri-dark = "file://./wallpapers/desert.jpg";
+    };
   };
   home.packages = with pkgs; [
     # Extensions
