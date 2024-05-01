@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, pkgs-unstable, ... }:
+{ inputs, config, pkgs, pkgs-unstable, nix-flatpak, ... }:
 
 {
   imports =
@@ -88,7 +88,7 @@
   users.users.matthias = {
     isNormalUser = true;
     description = "Matthias";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "sound" "video" ];
     packages =
       (with pkgs; [
         firefox
@@ -102,6 +102,7 @@
         filezilla
         easyeffects
         bottles
+        pavucontrol
       ])
 
       ++
@@ -136,6 +137,13 @@
   # };
 
   # List services that you want to enable:
+
+  services.flatpak = {
+    enable = true;
+    packages = [
+
+    ];
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

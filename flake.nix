@@ -14,9 +14,10 @@
     };
     lemonake.url = "github:passivelemon/lemonake";
     ollama.url = "github:abysssol/ollama-flake";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ollama, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ollama, nix-flatpak, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -38,7 +39,10 @@
             inherit inputs;
             inherit pkgs-unstable;
           };
-          modules = [ ./configuration.nix ];
+          modules = [
+            nix-flatpak.nixosModules.nix-flatpak
+            ./configuration.nix
+          ];
         };
       };
       homeConfigurations = {
