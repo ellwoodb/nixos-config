@@ -6,5 +6,6 @@
     ./git
     ./gnome
     ./hyprland
+    ./zsh
   ];
 }

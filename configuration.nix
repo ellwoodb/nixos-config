@@ -79,12 +79,16 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # zsh
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.matthias = {
     isNormalUser = true;
     description = "Matthias";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.zsh;
     packages =
       (with pkgs; [
         firefox
@@ -96,12 +100,15 @@
         webcord
         sidequest
         filezilla
+        easyeffects
+        bottles
       ])
 
       ++
 
       (with pkgs-unstable; [
-
+        wine
+        winetricks
       ]);
   };
 
@@ -140,8 +147,6 @@
   networking.firewall.enable = false;
 
   programs.java.enable = true;
-
-  programs.zsh.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
