@@ -3,10 +3,11 @@
 {
   imports = [
     ./cider
+    ./flatpak
+    ./gnome
     ./nvidia
     ./ollama
     ./steam
     ./tailscale
-    ./gnome
   ];
 }

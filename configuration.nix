@@ -12,9 +12,12 @@
       ./nixosModules
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -102,14 +105,12 @@
         filezilla
         easyeffects
         bottles
-        pavucontrol
       ])
 
       ++
 
       (with pkgs-unstable; [
-        wine
-        winetricks
+
       ]);
   };
 
@@ -126,31 +127,17 @@
     neovim
     nixpkgs-fmt
     distrobox
+    pavucontrol
+    wine
+    winetricks
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  services.flatpak = {
-    enable = true;
-    packages = [
-
-    ];
-  };
+  # List services that you want to enable
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   virtualisation.docker.enable = true;
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
