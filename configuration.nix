@@ -13,12 +13,18 @@
     ];
 
   # Bootloader
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    device = "nodev";
-    configurationLimit = 10;
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+      devices = [ "nodev" ];
+      enable = true;
+      efiSupport = true;
+      useOSProber = true;
+    };
   };
 
   networking.hostName = "nixos"; # Define your hostname.
