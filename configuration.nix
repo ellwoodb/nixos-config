@@ -17,14 +17,11 @@
   boot.loader.grub = {
     enable = true;
     useOSProber = true;
+    device = "nodev";
+    configurationLimit = 10;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -105,6 +102,7 @@
         filezilla
         easyeffects
         bottles
+        synology-drive-client
       ])
 
       ++
@@ -130,6 +128,7 @@
     pavucontrol
     wine
     winetricks
+    timeshift
   ];
 
   # List services that you want to enable
@@ -144,6 +143,11 @@
   programs.java.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
