@@ -3,7 +3,7 @@
 let
   cider = pkgs.appimageTools.wrapType2 {
     name = "cider";
-    src = /home/matthias/.dotfiles/nixosModules/cider/cider_data/cider.AppImage;
+    src = /home/matthias/.dotfiles/nixosModules/cider/cider_data/cider-new.AppImage;
   };
   ciderDesktopItem = pkgs.makeDesktopItem {
     name = "cider";

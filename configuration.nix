@@ -109,12 +109,20 @@
         easyeffects
         bottles
         synology-drive-client
+        protonup-qt
+        lutris
+        vesktop
+        uxplay
+        mattermost-desktop
+        blender
+        element-desktop
+        chromium
       ])
 
       ++
 
       (with pkgs-unstable; [
-
+        r2modman
       ]);
   };
 
@@ -146,6 +154,17 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true; # printing
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+      userServices = true;
+    };
+  };
+
   programs.java.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -154,6 +173,8 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

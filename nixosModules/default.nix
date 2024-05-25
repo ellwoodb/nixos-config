@@ -3,6 +3,7 @@
 {
   imports = [
     ./cider
+    ./coolercontrol
     ./flatpak
     ./gnome
     ./nvidia
