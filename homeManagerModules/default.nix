@@ -4,7 +4,7 @@
   imports = [
     ./firefox
     ./git
-    ./gnome
+    #./gnome
     ./hyprland
     ./zsh
   ];

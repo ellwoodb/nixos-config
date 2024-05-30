@@ -117,6 +117,12 @@
         blender
         element-desktop
         chromium
+        microsoft-edge-dev
+        brave
+        nodejs
+        gnome-connections
+        tigervnc
+        heroic
       ])
 
       ++
@@ -156,7 +162,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true; # printing
+    nssmdns4 = true; # printing
     publish = {
       enable = true;
       addresses = true;

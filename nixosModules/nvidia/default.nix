@@ -46,7 +46,7 @@
 
   environment.systemPackages = with pkgs; [
     cudatoolkit
-    nvtop-nvidia
+    nvtopPackages.nvidia
   ];
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];

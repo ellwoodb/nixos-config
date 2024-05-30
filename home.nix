@@ -73,6 +73,7 @@
     NIXOS_OZONE_WL = "1";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WEBKIT_DISABLE_DMABUF_RENDERER = "1";
   };
   nixpkgs.config.allowUnfreePredicate = _: true;
   # Let Home Manager install and manage itself.

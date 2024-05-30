@@ -5,9 +5,10 @@
     ./cider
     ./coolercontrol
     ./flatpak
-    ./gnome
+    #./gnome
     ./nvidia
     ./ollama
+    ./plasma
     ./steam
     ./tailscale
   ];
