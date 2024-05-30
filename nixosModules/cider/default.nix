@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgs-unstable, ... }:
+{ inputs, config, pkgs, ... }:
 
 let
   cider = pkgs.appimageTools.wrapType2 {

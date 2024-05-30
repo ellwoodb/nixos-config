@@ -1,6 +1,5 @@
-{ inputs, config, pkgs, pkgs-unstable, nix-flatpak, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   programs.coolercontrol.enable = true;
-  #programs.coolercontrol.nvidiaSupport = true;
 }

@@ -1,10 +1,7 @@
-{ inputs, config, pkgs, pkgs-unstable, nix-flatpak, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   services.flatpak = {
     enable = true;
-    packages = [
-
-    ];
   };
 }

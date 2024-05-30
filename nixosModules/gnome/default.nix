@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgs-unstable, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   services.xserver.desktopManager.gnome.enable = true;

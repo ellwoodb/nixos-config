@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, pkgs-unstable, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   programs.firefox = {

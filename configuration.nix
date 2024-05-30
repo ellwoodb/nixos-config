@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, pkgs-unstable, nix-flatpak, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -52,8 +52,9 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-
+  services.xserver.excludePackages = with pkgs; [
+    xterm
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -101,32 +102,20 @@
         bitwarden
         prusa-slicer
         prismlauncher
-        inputs.lemonake.packages.${pkgs.system}.alvr
-        webcord
         sidequest
         filezilla
         easyeffects
         bottles
         synology-drive-client
         protonup-qt
-        lutris
         vesktop
         uxplay
-        mattermost-desktop
         blender
-        element-desktop
         chromium
-        microsoft-edge-dev
         brave
         nodejs
-        gnome-connections
         tigervnc
         heroic
-      ])
-
-      ++
-
-      (with pkgs-unstable; [
         r2modman
       ]);
   };
