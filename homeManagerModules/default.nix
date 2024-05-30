@@ -5,7 +5,6 @@
     ./firefox
     ./git
     #./gnome
-    ./hyprland
     ./zsh
   ];
 }
