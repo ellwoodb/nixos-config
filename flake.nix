@@ -19,16 +19,11 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      #pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
       ollama-cuda = ollama.packages.${system}.cuda.override { cudaGcc = pkgs.gcc11; };
     in
     {
-      nixpkgs = {
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = (_: true);
-        };
-      };
       nixosConfigurations = {
         desktop = lib.nixosSystem {
           inherit system;
