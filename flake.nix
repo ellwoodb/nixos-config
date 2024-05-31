@@ -13,9 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ollama.url = "github:abysssol/ollama-flake";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins.inputs.hyprland.follows = "hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, ollama, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ollama, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
