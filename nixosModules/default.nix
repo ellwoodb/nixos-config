@@ -10,6 +10,7 @@
     ./ollama
     ./plasma
     ./steam
+    ./pog
     ./tailscale
   ];
 }

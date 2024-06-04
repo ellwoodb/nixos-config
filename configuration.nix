@@ -117,6 +117,9 @@
         tigervnc
         heroic
         r2modman
+        onlyoffice-bin
+        mongodb-compass
+        lutris
       ]);
   };
 
@@ -167,6 +170,8 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+
+  boot.kernel.sysctl."vm.max_map_count" = 262144;
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
