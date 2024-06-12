@@ -94,7 +94,7 @@
   users.users.matthias = {
     isNormalUser = true;
     description = "Matthias";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "sound" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" ];
     packages =
       (with pkgs; [
         firefox
@@ -140,13 +140,13 @@
     wine
     winetricks
     timeshift
+    python3
   ];
 
   # List services that you want to enable
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  virtualisation.docker.enable = true;
 
   # Or disable the firewall altogether.
   networking.firewall.enable = false;

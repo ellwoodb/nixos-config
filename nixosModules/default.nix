@@ -12,5 +12,6 @@
     ./steam
     ./pog
     ./tailscale
+    ./docker
   ];
 }
