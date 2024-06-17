@@ -120,6 +120,10 @@
         onlyoffice-bin
         mongodb-compass
         lutris
+        davinci-resolve
+        webcord
+        orca-slicer
+        zed-editor
       ]);
   };
 
@@ -161,6 +165,8 @@
       userServices = true;
     };
   };
+
+  programs.dconf.enable = true;
 
   programs.java.enable = true;
 

@@ -2,10 +2,12 @@
 
 {
   imports = [
+    ./alvr
     ./cider
     ./coolercontrol
     ./flatpak
     #./gnome
+    ./hyprland
     ./nvidia
     ./ollama
     ./plasma

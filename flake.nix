@@ -16,6 +16,7 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
+    lemonake.url = "github:passivelemon/lemonake";
   };
 
   outputs = { self, nixpkgs, home-manager, ollama, hyprland, ... }@inputs:

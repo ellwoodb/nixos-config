@@ -5,6 +5,9 @@
     ./firefox
     ./git
     #./gnome
+    ./hyprland
     ./zsh
+    ./rofi
+    #./waybar
   ];
 }
