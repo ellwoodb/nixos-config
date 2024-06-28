@@ -9,6 +9,20 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Enable modules
+  hyprland.enable = true;
+
+  cider.enable = true;
+  steam.enable = true;
+  vr.enable = true;
+
+  coolercontrol.enable = true;
+  docker.enable = true;
+  flatpak.enable = true;
+  nvidia.enable = true;
+  ollama.enable = true;
+  tailscale.enable = true;
+
 
   # Bootloader
   boot.loader = {

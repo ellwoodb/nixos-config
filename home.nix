@@ -4,6 +4,14 @@
   imports = [
     ./homeManagerModules
   ];
+
+  # Enable modules
+  easyeffects-conf.enable = true;
+  firefox-conf.enable = true;
+  git-conf.enable = true;
+  vscode-conf.enable = true;
+  zsh-conf.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matthias";
@@ -53,7 +61,6 @@
 
     # Other
     filezilla
-    easyeffects
     synology-drive-client
     uxplay
     blender

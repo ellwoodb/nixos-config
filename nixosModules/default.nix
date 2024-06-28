@@ -1,26 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
-    ./audio
-    ./avahi
-    ./bluetooth
-    ./cider
-    ./coolercontrol
-    ./docker
-    ./flatpak
-    #./gnome
-    ./hyprland
-    ./java
-    ./nvidia
-    ./ollama
-    ./osu
-    ./plasma
-    ./pog
-    ./ssh
-    ./steam
-    ./tailscale
-    ./vr
-    ./zsh
+    ./desktops
+    ./programs
+    ./services
   ];
 }

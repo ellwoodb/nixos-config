@@ -1,15 +1,12 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
-    ./easyeffects
-    ./firefox
-    ./git
-    #./gnome
-    ./hyprland
-    ./rofi
-    ./vscode
-    ./waybar
-    ./zsh
+    ./easyeffects.nix
+    ./firefox.nix
+    ./git.nix
+    ./gnome.nix
+    ./vscode.nix
+    ./zsh.nix
   ];
 }
