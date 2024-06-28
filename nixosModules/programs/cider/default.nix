@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, vars, ... }:
 
 let
   cider = pkgs.appimageTools.wrapType2 {
@@ -21,7 +21,7 @@ in
   };
 
   config = lib.mkIf config.cider.enable {
-    users.users.matthias = {
+    users.users.${vars.username} = {
       packages =
         (with pkgs; [
           # Cider

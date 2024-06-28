@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, vars, ... }:
 
 let
   version = "1.3.2";
@@ -29,7 +29,7 @@ in
   };
 
   config = lib.mkIf config.pog.enable {
-    users.users.matthias = {
+    users.users.${vars.username} = {
       packages =
         (with pkgs; [
           pog

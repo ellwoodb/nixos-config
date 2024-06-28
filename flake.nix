@@ -42,29 +42,26 @@
     in
     {
       nixosConfigurations = {
-        desktop = lib.nixosSystem {
+        desktop = lib.nixosSystem rec {
           inherit system;
           specialArgs = {
             inherit inputs;
             inherit pkgs;
+            vars = {
+              username = "matthias";
+              gitUsername = "ellwoodb";
+              name = "Matthias";
+              email = "matthias@ellwoodb.de";
+              hostname = "nixos-desktop";
+            };
           };
           modules = [
-            ./configuration.nix
+            ./hosts/desktop/configuration.nix
+            inputs.home-manager.nixosModules.default
+            { home-manager.extraSpecialArgs = specialArgs; }
           ];
-        };
-      };
-      homeConfigurations = {
-        matthias = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit pkgs;
-          };
-          modules = [ ./home.nix ];
         };
       };
     };
 }
+

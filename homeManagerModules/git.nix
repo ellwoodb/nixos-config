@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, vars, ... }:
 
 {
   options = {
@@ -9,8 +9,8 @@
   config = lib.mkIf config.git-conf.enable {
     programs.git = {
       enable = true;
-      userName = "ellwoodb";
-      userEmail = "matthias@ellwoodb.de";
+      userName = "${vars.gitUsername}";
+      userEmail = "${vars.email}";
       extraConfig = {
         init.defaultBranch = "main";
       };
