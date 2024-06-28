@@ -2,18 +2,25 @@
 
 {
   imports = [
-    ./alvr
+    ./audio
+    ./avahi
+    ./bluetooth
     ./cider
     ./coolercontrol
+    ./docker
     ./flatpak
     #./gnome
     ./hyprland
+    ./java
     ./nvidia
     ./ollama
+    ./osu
     ./plasma
-    ./steam
     ./pog
+    ./ssh
+    ./steam
     ./tailscale
-    ./docker
+    ./vr
+    ./zsh
   ];
 }

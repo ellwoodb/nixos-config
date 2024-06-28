@@ -2,12 +2,14 @@
 
 {
   imports = [
+    ./easyeffects
     ./firefox
     ./git
     #./gnome
     ./hyprland
-    ./zsh
     ./rofi
-    #./waybar
+    ./vscode
+    ./waybar
+    ./zsh
   ];
 }

@@ -6,12 +6,9 @@
     nvtopPackages.nvidia
   ];
 
-
-  # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -30,7 +27,7 @@
     nvidiaSettings = true;
 
     # Use Latest Nvidia-Drivers
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
@@ -40,7 +37,7 @@
   environment.sessionVariables = {
     # Force Wayland On Electron Apps
     NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    #ELECTRON_OZONE_PLATFORM_HINT = "auto";
     # Webkit
     WEBKIT_DISABLE_DMABUF_RENDERER = "1";
     # Required To Run The Correct Gbm Backend For Nvidia GpUs On Wayland
