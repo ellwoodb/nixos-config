@@ -6,7 +6,4 @@
     ./hyprland.nix
     ./plasma.nix
   ];
-
-  plasma.enable =
-    lib.mkDefault true;
 }

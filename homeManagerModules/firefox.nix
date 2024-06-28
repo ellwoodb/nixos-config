@@ -26,7 +26,7 @@
             engines = {
               "Brave" = {
                 urls = [{ template = "https://search.brave.com/search?q={searchTerms}"; }];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                iconUpdateURL = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/favicon-32x32.B2iBzfXZ.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = [ "@brave" ];
               };

@@ -12,6 +12,7 @@
 
   # Enable modules
   hyprland.enable = true;
+  plasma.enable = true;
 
   cider.enable = true;
   steam.enable = true;
