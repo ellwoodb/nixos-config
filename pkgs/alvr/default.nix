@@ -1,3 +1,5 @@
+# Thanks to PassiveLemon, who wrote most of this stuff. I just copied from here https://github.com/PassiveLemon/lemonake and updated some things.
+
 { lib
 , stdenv
 , fetchzip
@@ -20,6 +22,7 @@
 , xorg
 , xvidcore
 , pkgs
+, SDL2
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "alvr";
@@ -47,8 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
     libva
     libvdpau
     vulkan-loader
-    stdenv.cc.cc.lib
-    pkgs.SDL2
+    SDL2
   ];
 
   runtimeDependencies = [
