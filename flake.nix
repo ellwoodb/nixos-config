@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs sources
-    #nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     # Home-Manager
@@ -33,11 +33,11 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, home-manager, ollama, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ollama, hyprland, nixpkgs-stable, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+      pkgs = import nixpkgs { system = system; config.allowUnfree = true; };
       ollama-cuda = ollama.packages.${system}.cuda.override { cudaGcc = pkgs.gcc11; };
     in
     {
@@ -47,6 +47,10 @@
           specialArgs = {
             inherit inputs;
             inherit pkgs;
+            pkgs-stable = import nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
             vars = {
               username = "matthias";
               gitUsername = "ellwoodb";

@@ -12,7 +12,9 @@
       extraUpFlags = [
         "--ssh"
         "--accept-dns"
+        "--operator=matthias"
       ];
     };
+    environment.systemPackages = [ pkgs.ktailctl ]; # for GUI
   };
 }

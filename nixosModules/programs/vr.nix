@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, vars, ... }:
 
 {
   options = {
@@ -9,7 +9,7 @@
   config = lib.mkIf config.vr.enable {
     programs.alvr = {
       enable = true;
-      package = inputs.lemonake.packages.${pkgs.system}.alvr;
+      package = pkgs.callPackage ../../pkgs/alvr/default.nix { };
       openFirewall = true;
     };
 

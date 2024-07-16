@@ -23,6 +23,7 @@
       vulkan-tools
       wayland-utils
       aha
+      kdePackages.partitionmanager
     ];
   };
 }

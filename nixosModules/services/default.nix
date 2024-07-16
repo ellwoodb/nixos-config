@@ -9,10 +9,12 @@
     ./docker.nix
     ./flatpak.nix
     ./java.nix
+    ./netbird.nix
     ./nvidia.nix
     ./ollama.nix
     ./ssh.nix
     ./tailscale.nix
+    ./virtualisation.nix
   ];
 
   audio.enable =

@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, inputs, vars, ... }:
+{ config, pkgs, inputs, vars, ... }:
 
 {
   imports = [
@@ -11,6 +11,8 @@
   git-conf.enable = true;
   vscode-conf.enable = true;
   zsh-conf.enable = true;
+  gnome-conf.enable = false;
+  virtualisation-conf.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,8 +32,8 @@
   # environment.
   home.packages = with pkgs; [
     # 3D Printing
-    prusa-slicer
-    orca-slicer
+    #prusa-slicer
+    #orca-slicer
 
     # Discord Clients
     vesktop
@@ -40,11 +42,12 @@
     # Games / Compatability
     heroic
     prismlauncher
-    lutris
     bottles
-    protonup-qt
+    protonplus
     sidequest
     r2modman
+    mangohud
+    gamemode
 
     # Browsers
     chromium
@@ -55,21 +58,19 @@
     zed-editor
     onlyoffice-bin
 
-    # Terminals
-    warp-terminal
-    alacritty
-
     # Other
     filezilla
     synology-drive-client
     uxplay
-    blender
+    #blender
     nodejs
     tigervnc
     davinci-resolve
     fastfetch
     qdirstat
     krita
+    audacity
+    vlc
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

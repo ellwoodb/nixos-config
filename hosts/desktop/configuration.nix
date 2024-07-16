@@ -11,8 +11,9 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable modules
-  hyprland.enable = true;
+  hyprland.enable = false;
   plasma.enable = true;
+  gnome.enable = false;
 
   cider.enable = true;
   steam.enable = true;
@@ -24,7 +25,8 @@
   nvidia.enable = true;
   ollama.enable = true;
   tailscale.enable = true;
-
+  orca-slicer.enable = true;
+  virtualisation.enable = true;
 
   # Bootloader
   boot.loader = {
@@ -39,6 +41,10 @@
       efiSupport = true;
       useOSProber = true;
     };
+  };
+
+  environment.sessionVariables = {
+    FLAKE = "/home/${vars.username}/.dotfiles";
   };
 
   networking.hostName = "${vars.hostname}"; # Define your hostname.
@@ -130,6 +136,7 @@
     killall
     wl-clipboard
     lxappearance
+    nh
   ];
 
   programs.dconf.enable = true;
@@ -142,8 +149,8 @@
     options = "--delete-older-than 30d";
   };
   nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+    substituters = [ "https://nix-gaming.cachix.org" "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   # Needed for modern games to run

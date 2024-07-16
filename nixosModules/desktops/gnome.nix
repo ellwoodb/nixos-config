@@ -12,11 +12,11 @@
     programs.dconf.enable = true;
 
     environment.systemPackages = with pkgs; [
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       gnome.gnome-settings-daemon
-      gnome.gnome-tweaks
+      gnome-tweaks
       gnome-extension-manager
-      gnome.dconf-editor
+      dconf-editor
     ];
   };
 
