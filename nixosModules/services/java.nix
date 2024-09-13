@@ -8,5 +8,6 @@
 
   config = lib.mkIf config.java.enable {
     programs.java.enable = true;
+    environment.systemPackages = with pkgs; [ jdk8 ];
   };
 }

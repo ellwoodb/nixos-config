@@ -1,20 +1,54 @@
 { inputs, config, pkgs, lib, ... }:
 
 {
+  home.packages = with pkgs; [ hyprcursor ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+
+    font = {
+      name = "Sans";
+      size = 11;
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = [ "DP-1,3440x1440@165,0x0,1" "HDMI-A-1,1920x1080@60,3440x180,1" ];
+      monitor = [ "DP-4,3440x1440@165,0x0,1" "HDMI-A-2,1920x1080@60,3440x180,1" ];
 
-      exec-once = [ "${pkgs.waybar}/bin/waybar" ];
+      exec = [ "${pkgs.waybar}/bin/waybar" ];
 
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-        "LIBVA_DRIVER_NAME,nvidia"
+        "XCURSOR_SIZE,16"
+        "HYPRCURSOR_SIZE,16"
+
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+
+        "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "XDG_SESSION_DESKTOP,Hyprland"
       ];
 
       general = {
@@ -30,12 +64,24 @@
 
         allow_tearing = false;
 
-        layout = "master";
+        layout = "dwindle";
       };
 
       cursor = {
         no_hardware_cursors = true;
       };
+
+      workspace = [
+        "1,monitor:DP-4,default:true"
+        "2,monitor:HDMI-A-2"
+        "3,monitor:DP-4"
+        "4,monitor:DP-4"
+        "5,monitor:DP-4"
+        "6,monitor:DP-4"
+        "7,monitor:DP-4"
+        "8,monitor:HDMI-A-2"
+        "9,monitor:HDMI-A-2"
+      ];
 
       decoration = {
         rounding = 10;
@@ -73,10 +119,11 @@
       dwindle = {
         pseudotile = true;
         preserve_split = true;
+        smart_split = true;
       };
 
       master = {
-        new_status = "master";
+        new_status = "dwindle";
       };
 
       misc = {
@@ -108,7 +155,8 @@
       "$mainMod" = "SUPER";
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
-      "$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
+      #"$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
+      "$runMenu" = "walker";
 
       bind = [
         "$mainMod, Q, exec, $terminal"
@@ -116,7 +164,6 @@
         "$mainMod, M, exit,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
 
@@ -157,6 +204,15 @@
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
+      ];
+
+      bindl = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ];
+
+      bindr = [
+        "$mainMod, SPACE, exec, pkill wofi || $runMenu"
       ];
 
       windowrulev2 = [ "suppressevent maximize, class:.*" ];

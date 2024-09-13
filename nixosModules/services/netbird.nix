@@ -8,6 +8,6 @@
 
   config = lib.mkIf config.netbird.enable {
     services.netbird.enable = true; # for netbird service & CLI
-    environment.systemPackages = [ pkgs.netbird-ui ]; # for GUI
+    environment.systemPackages = with pkgs; [ netbird-ui ]; # for GUI
   };
 }

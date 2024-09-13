@@ -10,6 +10,21 @@
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;
+      userSettings = {
+        "editor.formatOnSave" = true;
+        "svelte.enable-ts-plugin" = true;
+        "workbench.iconTheme" = "material-icon-theme";
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
+        "window.titleBarStyle" = "custom";
+        "cody.autocomplete.advanced.provider" = "experimental-ollama";
+        "cody.autocomplete.advanced.serverEndpoint" = "http://localhost:11434";
+        "editor.inlineSuggest.suppressSuggestions" = true;
+      };
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         jnoortheen.nix-ide
@@ -33,6 +48,8 @@
 
         dbaeumer.vscode-eslint
         # NOT AVAILIABLE: rvest.vs-code-prettier-eslint
+        pkief.material-icon-theme
+        yoavbls.pretty-ts-errors
       ];
     };
   };

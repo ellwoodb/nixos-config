@@ -15,6 +15,6 @@
         "--operator=matthias"
       ];
     };
-    environment.systemPackages = [ pkgs.ktailctl ]; # for GUI
+    #environment.systemPackages = with pkgs; [ ktailctl ]; # for KDE GUI
   };
 }

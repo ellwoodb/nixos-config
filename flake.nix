@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs sources
     nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+    #nixpkgs.url = "nixpkgs/nixos-24.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     # Home-Manager
@@ -18,9 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Ollama
-    ollama.url = "github:abysssol/ollama-flake";
-
     # Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
@@ -31,14 +29,23 @@
     # Some gaming stuff, e.g. ALVR
     lemonake.url = "github:passivelemon/lemonake";
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    # Sops
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    walker.url = "github:abenz1267/walker";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, ollama, hyprland, nixpkgs-stable, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, nixpkgs-stable, walker, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = import nixpkgs { system = system; config.allowUnfree = true; };
-      ollama-cuda = ollama.packages.${system}.cuda.override { cudaGcc = pkgs.gcc11; };
     in
     {
       nixosConfigurations = {
@@ -56,13 +63,16 @@
               gitUsername = "ellwoodb";
               name = "Matthias";
               email = "matthias@ellwoodb.de";
-              hostname = "nixos-desktop";
+              hostname = "desktop";
             };
           };
           modules = [
             ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
-            { home-manager.extraSpecialArgs = specialArgs; }
+            {
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.backupFileExtension = "back";
+            }
           ];
         };
       };

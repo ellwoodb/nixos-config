@@ -2,7 +2,9 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
+let
+  alexandriaUsername = (builtins.readFile "${config.sops.secrets."samba/alexandria/username".path}");
+in
 {
   imports =
     [
@@ -33,10 +35,17 @@
       fsType = "ntfs-3g";
       options = [ "rw" "uid=1000" ];
     };
-
+  fileSystems."/mnt/nas-home" =
+    {
+      device = "//192.168.1.2/home";
+      fsType = "cifs";
+      options = [ "credentials=${config.sops.templates."alexandria-smb-credentials".path}" "x-systemd.automount" "noauto" "uid=1000" "gid=1000" ];
+    };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/d3ab6045-0cbf-42e8-add8-9620f057ecb1"; }];
+    [{
+      device = "/dev/disk/by-uuid/d3ab6045-0cbf-42e8-add8-9620f057ecb1";
+    }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

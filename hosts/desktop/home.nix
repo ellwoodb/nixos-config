@@ -1,18 +1,19 @@
-{ config, pkgs, inputs, vars, ... }:
+{ config, pkgs, pkgs-stable, inputs, vars, ... }:
 
 {
   imports = [
     ../../homeManagerModules
+    inputs.sops-nix.homeManagerModules.sops
+    #inputs.walker.homeManagerModules.walker
   ];
 
   # Enable modules
-  easyeffects-conf.enable = true;
+  easyeffects-conf.enable = false;
   firefox-conf.enable = true;
   git-conf.enable = true;
   vscode-conf.enable = true;
   zsh-conf.enable = true;
-  gnome-conf.enable = false;
-  virtualisation-conf.enable = true;
+  gnome-conf.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -31,17 +32,16 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # 3D Printing
-    #prusa-slicer
-    #orca-slicer
-
-    # Discord Clients
+    # Chats
     vesktop
-    webcord-vencord
+    #webcord-vencord
+    #element-desktop
 
     # Games / Compatability
     heroic
     prismlauncher
+    #(prismlauncher.override { withWaylandGLFW = true; jdks = [ temurin-bin-21 temurin-bin-8 temurin-bin-17 ]; })
+    glfw-wayland-minecraft
     bottles
     protonplus
     sidequest
@@ -52,25 +52,41 @@
     # Browsers
     chromium
     brave
+    pkgs-stable.ladybird
 
     # Editors
-    anytype
+    #anytype
     zed-editor
     onlyoffice-bin
+
+    # Terminals
+    kitty
+    warp-terminal
 
     # Other
     filezilla
     synology-drive-client
     uxplay
-    #blender
+    blender
     nodejs
     tigervnc
-    davinci-resolve
+    #davinci-resolve
     fastfetch
     qdirstat
     krita
     audacity
     vlc
+    hoppscotch
+    xorg.xhost
+    rivalcfg
+    fd
+    ripgrep
+    nixd
+    upscayl
+    mqtt-explorer
+    inputs.zen-browser.packages."${system}".default
+    inkscape
+    orca-slicer
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

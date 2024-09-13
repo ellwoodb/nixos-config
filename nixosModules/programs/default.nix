@@ -3,13 +3,15 @@
 {
   imports = [
     ./cider
+    ./nh.nix
     ./pog.nix
     ./steam.nix
     ./vr.nix
     ./zsh.nix
-    ./orca-slicer.nix
   ];
 
   zsh.enable =
+    lib.mkDefault true;
+  nh.enable =
     lib.mkDefault true;
 }

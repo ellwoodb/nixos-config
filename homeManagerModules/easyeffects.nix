@@ -7,13 +7,9 @@
   };
 
   config = lib.mkIf config.easyeffects-conf.enable {
-    home.packages = with pkgs; [
-      #easyeffects
-    ];
-
     services.easyeffects = {
       enable = true;
-      preset = "noise-red";
+      preset = "new mic";
     };
   };
 }

@@ -1,14 +1,12 @@
 { inputs, config, pkgs, lib, ... }:
 
 {
-  options = {
-    hyprland-conf.enable =
-      lib.mkEnableOption "enables Hyprland config";
-  };
-
-  config = lib.mkIf config.hyprland-conf.enable {
-    imports = [
-      ./hyprland.nix
-    ];
-  };
+  imports = [
+    ./hyprland.nix
+    ./waybar.nix
+    ./hyprpaper.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./walker.nix
+  ];
 }

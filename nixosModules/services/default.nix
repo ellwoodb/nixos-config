@@ -12,6 +12,7 @@
     ./netbird.nix
     ./nvidia.nix
     ./ollama.nix
+    ./sops.nix
     ./ssh.nix
     ./tailscale.nix
     ./virtualisation.nix
@@ -24,6 +25,8 @@
   bluetooth.enable =
     lib.mkDefault true;
   java.enable =
+    lib.mkDefault true;
+  sops.enable =
     lib.mkDefault true;
   ssh.enable =
     lib.mkDefault true;

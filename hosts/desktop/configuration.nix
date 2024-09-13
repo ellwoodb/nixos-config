@@ -6,14 +6,14 @@
       ./hardware-configuration.nix
       ../../nixosModules
       inputs.home-manager.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable modules
   hyprland.enable = false;
-  plasma.enable = true;
-  gnome.enable = false;
+  gnome.enable = true;
 
   cider.enable = true;
   steam.enable = true;
@@ -25,7 +25,6 @@
   nvidia.enable = true;
   ollama.enable = true;
   tailscale.enable = true;
-  orca-slicer.enable = true;
   virtualisation.enable = true;
 
   # Bootloader
@@ -41,10 +40,6 @@
       efiSupport = true;
       useOSProber = true;
     };
-  };
-
-  environment.sessionVariables = {
-    FLAKE = "/home/${vars.username}/.dotfiles";
   };
 
   networking.hostName = "${vars.hostname}"; # Define your hostname.
@@ -136,25 +131,41 @@
     killall
     wl-clipboard
     lxappearance
-    nh
+  ];
+
+  fonts.packages = with pkgs; [
+    nerdfonts
+    font-awesome
+    noto-fonts-emoji
   ];
 
   programs.dconf.enable = true;
 
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
   nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    substituters = [
+      "https://nix-gaming.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://walker.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+    ];
   };
+  nix.optimise.automatic = true;
 
   # Needed for modern games to run
   boot.kernel.sysctl."vm.max_map_count" = 262144;
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+    __GL_THREADED_OPTIMIZATIONS = 0;
+    MOZ_ENABLE_WAYLAND = 0;
+    FLAKE = "/home/${vars.username}/.dotfiles";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

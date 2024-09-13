@@ -7,7 +7,12 @@
   };
 
   config = lib.mkIf config.ollama.enable {
-    services.ollama.enable = true;
-    services.ollama.acceleration = "cuda";
+    services.ollama = {
+      enable = true;
+      package = pkgs.ollama-cuda;
+      acceleration = "cuda";
+      host = "0.0.0.0";
+      port = 11434;
+    };
   };
 }

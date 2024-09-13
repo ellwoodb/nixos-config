@@ -30,11 +30,10 @@ in
 
   config = lib.mkIf config.pog.enable {
     users.users.${vars.username} = {
-      packages =
-        (with pkgs; [
-          pog
-          pogDesktopItem
-        ]);
+      packages = [
+        pog
+        pogDesktopItem
+      ];
     };
   };
 }

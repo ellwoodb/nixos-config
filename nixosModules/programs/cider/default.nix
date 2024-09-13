@@ -3,7 +3,7 @@
 let
   cider = pkgs.appimageTools.wrapType2 {
     name = "cider";
-    src = /home/matthias/.dotfiles/nixosModules/programs/cider/cider_data/cider.AppImage;
+    src = /home/matthias/.dotfiles/nixosModules/programs/cider/cider_data/Cider-v2.4.AppImage;
   };
   ciderDesktopItem = pkgs.makeDesktopItem {
     name = "cider";
@@ -22,12 +22,11 @@ in
 
   config = lib.mkIf config.cider.enable {
     users.users.${vars.username} = {
-      packages =
-        (with pkgs; [
-          # Cider
-          cider
-          ciderDesktopItem
-        ]);
+      packages = [
+        # Cider
+        cider
+        ciderDesktopItem
+      ];
     };
   };
 }

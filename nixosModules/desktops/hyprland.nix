@@ -11,11 +11,15 @@
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     environment.systemPackages = with pkgs; [
-      alacritty
-      wofi
-      nautilus
+      dunst
+      polkit-kde-agent
     ];
+
+    services.displayManager.sddm.enable = true;
+
+    security.rtkit.enable = true;
+    security.pam.services.hyprlock = { };
   };
 }

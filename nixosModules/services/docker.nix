@@ -12,9 +12,10 @@
     # enable docker
     virtualisation.docker = {
       enable = true;
-      enableNvidia = true;
+      #enableNvidia = true;
     };
 
-    systemd.enableUnifiedCgroupHierarchy = false;
+    #systemd.enableUnifiedCgroupHierarchy = false;
+    hardware.nvidia-container-toolkit.enable = true;
   };
 }
