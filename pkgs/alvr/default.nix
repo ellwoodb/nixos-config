@@ -26,18 +26,18 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "alvr";
-  version = "20.11.0";
+  version = "20.11.1";
 
   src = fetchzip {
     url = "https://github.com/alvr-org/ALVR/releases/download/v${finalAttrs.version}/alvr_streamer_linux.tar.gz";
-    hash = "sha256-GfoXYzW3TUgpM5TXuHmsfhE9rP2M8iJpflF48tpmwIs=";
+    hash = "sha256-/m5uyqI1qrWc82FSoU+baSzpvIGXOwjjJhObMeWPjfg=";
   };
 
   alvrSrc = fetchFromGitHub {
     owner = "alvr-org";
     repo = "ALVR";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-niayCDmBW1W8zC6Hs+n0BN6p3MvsaPGdta5sJrZAccI=";
+    hash = "sha256-boSS7eEfcKRJf5gt1LKk/DuyZEWMTun093P7mkIjUgs=";
   };
 
   nativeBuildInputs = [

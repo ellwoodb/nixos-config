@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
   version = "1.3.2";
@@ -29,11 +29,9 @@ in
   };
 
   config = lib.mkIf config.pog.enable {
-    users.users.${vars.username} = {
-      packages = [
-        pog
-        pogDesktopItem
-      ];
-    };
+    environment.systemPackages = [
+      pog
+      pogDesktopItem
+    ];
   };
 }

@@ -58,13 +58,6 @@
               inherit system;
               config.allowUnfree = true;
             };
-            vars = {
-              username = "matthias";
-              gitUsername = "ellwoodb";
-              name = "Matthias";
-              email = "matthias@ellwoodb.de";
-              hostname = "desktop";
-            };
           };
           modules = [
             ./hosts/desktop/configuration.nix

@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib,  ... }:
 
 {
   options = {
@@ -7,8 +7,6 @@
   };
 
   config = lib.mkIf config.docker.enable {
-    users.users.${vars.username}.extraGroups = [ "docker" ];
-
     # enable docker
     virtualisation.docker = {
       enable = true;

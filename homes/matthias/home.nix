@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-stable, inputs, ... }:
+{ config, pkgs, pkgs-stable, inputs, vars, ... }:
 
 {
   imports = [
@@ -90,7 +90,7 @@
     mqtt-explorer
     inputs.zen-browser.packages."${system}".default
     inkscape
-    paprefs
+    orca-slicer
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

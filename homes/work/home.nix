@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-stable, inputs, ... }:
+{ config, pkgs, pkgs-stable, inputs, vars, ... }:
 
 {
   imports = [
@@ -15,14 +15,14 @@
   zsh-conf.enable = true;
   git-conf = {
     enable = true;
-    username = "ellwoodb";
-    email = "matthias@ellwoodb.de";
+    username = "";
+    email = "";
   };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "matthias";
-  home.homeDirectory = "/home/matthias";
+  home.username = "work";
+  home.homeDirectory = "/home/work";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -38,33 +38,15 @@
   home.packages = with pkgs; [
     # Chats
     vesktop
-    #webcord-vencord
-    #element-desktop
-
-    # Games / Compatability
-    heroic
-    prismlauncher
-    #(prismlauncher.override { withWaylandGLFW = true; jdks = [ temurin-bin-21 temurin-bin-8 temurin-bin-17 ]; })
-    glfw-wayland-minecraft
-    bottles
-    protonplus
-    sidequest
-    r2modman
-    mangohud
-    gamemode
 
     # Browsers
     chromium
     brave
-    pkgs-stable.ladybird
 
     # Editors
-    #anytype
-    zed-editor
     onlyoffice-bin
 
     # Terminals
-    kitty
     warp-terminal
 
     # Other
@@ -90,7 +72,6 @@
     mqtt-explorer
     inputs.zen-browser.packages."${system}".default
     inkscape
-    paprefs
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

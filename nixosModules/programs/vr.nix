@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   options = {

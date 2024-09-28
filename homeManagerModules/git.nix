@@ -1,16 +1,24 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
-  options = {
-    git-conf.enable =
+  options.git-conf = {
+    enable =
       lib.mkEnableOption "enables GIT config";
+    username = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
+    email = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
   };
 
   config = lib.mkIf config.git-conf.enable {
     programs.git = {
       enable = true;
-      userName = "${vars.gitUsername}";
-      userEmail = "${vars.email}";
+      userName = "${config.git-conf.username}";
+      userEmail = "${config.git-conf.email}";
       extraConfig = {
         init.defaultBranch = "main";
       };

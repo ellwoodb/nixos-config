@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, vars, ... }:
+{ inputs, config, pkgs, pkgs-stable, ... }:
 
 {
   imports =
@@ -13,7 +13,8 @@
 
   # Enable modules
   hyprland.enable = false;
-  gnome.enable = true;
+  gnome.enable = false;
+  plasma.enable = true;
 
   cider.enable = true;
   steam.enable = true;
@@ -42,7 +43,7 @@
     };
   };
 
-  networking.hostName = "${vars.hostname}"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -88,11 +89,13 @@
   services.printing.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${vars.username} = {
-    isNormalUser = true;
-    description = "${vars.username}";
-    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" ];
-    packages = with pkgs; [ ];
+  users.users = {
+    matthias = {
+      isNormalUser = true;
+      description = "matthias";
+      extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "docker" "libvirtd" ];
+      packages = with pkgs-stable; [ orca-slicer ];
+    };
   };
 
   home-manager = {
@@ -100,7 +103,7 @@
       inherit inputs;
     };
     users = {
-      "${vars.username}" = import ./home.nix;
+      "matthias" = import ./home.nix;
     };
   };
 
@@ -164,7 +167,7 @@
     NIXOS_OZONE_WL = 1;
     __GL_THREADED_OPTIMIZATIONS = 0;
     MOZ_ENABLE_WAYLAND = 0;
-    FLAKE = "/home/${vars.username}/.dotfiles";
+    FLAKE = "/home/matthias/.dotfiles";
   };
 
   # This value determines the NixOS release from which the default

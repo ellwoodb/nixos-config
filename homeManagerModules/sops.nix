@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   options = {
@@ -10,6 +10,6 @@
     sops.defaultSopsFile = ../../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
 
-    sops.age.keyFile = "/home/${vars.username}/.config/sops/age/keys.txt";
+    sops.age.keyFile = "/home/matthias/.config/sops/age/keys.txt";
   };
 }

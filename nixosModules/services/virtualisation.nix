@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, vars, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   options = {
@@ -23,9 +23,6 @@
           ];
         };
       };
-    };
-    users.users.${vars.username} = {
-      extraGroups = [ "libvirtd" ];
     };
     programs.virt-manager.enable = true;
     programs.dconf.enable = true;
