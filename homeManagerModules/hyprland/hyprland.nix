@@ -1,8 +1,6 @@
 { inputs, config, pkgs, lib, ... }:
 
 {
-  home.packages = with pkgs; [ hyprcursor ];
-
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
@@ -35,11 +33,17 @@
     settings = {
       monitor = [ "DP-4,3440x1440@165,0x0,1" "HDMI-A-2,1920x1080@60,3440x180,1" ];
 
-      exec = [ "${pkgs.waybar}/bin/waybar" ];
+      exec = [ 
+        
+      ];
+      exec-once = [
+        "systemctl --user start plasma-polkit-agent"
+        "swaync"
+        "${pkgs.waybar}/bin/waybar"
+      ];
 
       env = [
         "XCURSOR_SIZE,16"
-        "HYPRCURSOR_SIZE,16"
 
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "QT_QPA_PLATFORM,wayland;xcb"
@@ -52,10 +56,10 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 3;
+        gaps_out = 8;
 
-        border_size = 2;
+        border_size = 1;
 
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
@@ -140,7 +144,8 @@
 
         follow_mouse = 1;
 
-        sensitivity = 0;
+        sensitivity = -0.3;
+        accel_profile = "flat";
 
         touchpad = {
           natural_scroll = false;
@@ -156,7 +161,7 @@
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       #"$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
-      "$runMenu" = "walker";
+      "$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
 
       bind = [
         "$mainMod, Q, exec, $terminal"
@@ -166,6 +171,7 @@
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
+        "$mainMod, F, fullscreen,"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -215,7 +221,9 @@
         "$mainMod, SPACE, exec, pkill wofi || $runMenu"
       ];
 
-      windowrulev2 = [ "suppressevent maximize, class:.*" ];
+      windowrulev2 = [ 
+        "suppressevent maximize, class:.*" 
+      ];
     };
   };
 }

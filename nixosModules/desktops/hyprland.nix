@@ -13,8 +13,8 @@
     };
 
     environment.systemPackages = with pkgs; [
-      dunst
       polkit-kde-agent
+      overskride
     ];
 
     services.displayManager.sddm.enable = true;

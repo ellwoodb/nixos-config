@@ -1,16 +1,15 @@
-{ config, pkgs, pkgs-stable, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
     ../../homeManagerModules
     inputs.sops-nix.homeManagerModules.sops
-    #inputs.walker.homeManagerModules.walker
   ];
 
   # Enable modules
   easyeffects-conf.enable = false;
   firefox-conf.enable = true;
-  gnome-conf.enable = true;
+  gnome-conf.enable = false;
   vscode-conf.enable = true;
   zsh-conf.enable = true;
   git-conf = {
@@ -39,7 +38,7 @@
     # Chats
     vesktop
     #webcord-vencord
-    #element-desktop
+    element-desktop
 
     # Games / Compatability
     heroic
@@ -56,16 +55,13 @@
     # Browsers
     chromium
     brave
-    pkgs-stable.ladybird
+    inputs.zen-browser.packages."${system}".specific
 
     # Editors
-    #anytype
-    zed-editor
     onlyoffice-bin
 
     # Terminals
     kitty
-    warp-terminal
 
     # Other
     filezilla
@@ -87,10 +83,16 @@
     ripgrep
     nixd
     upscayl
-    mqtt-explorer
-    inputs.zen-browser.packages."${system}".default
     inkscape
     paprefs
+    orca-slicer
+
+    distrobox
+    distrobox-tui
+
+    xpipe
+
+    fractal
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

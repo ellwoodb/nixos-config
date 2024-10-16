@@ -1,8 +1,66 @@
 * {
-    border              : none;
-    font-family         : ZedMono NF, Font Awesome;
-    font-size           : 13px;
-    border-radius       : 15px;
-    color               : rgba(90, 110, 124, 0.798);
-    transition          : none;
+  font-family: ZedMono NF, Font Awesome;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  border-radius: 0px;
+}
+
+window#waybar {
+  background-color: rgba(20, 20, 20, 0.9);
+}
+
+/* top | right | bottom | left */
+.modules-left {
+  margin: 0 2.5px 0 2.5px;
+}
+
+.modules-center {
+  margin: 0 2.5px 0 2.5px;
+}
+
+.modules-right {
+  margin: 0 5px 0px 2.5px;
+}
+
+#workspaces button {
+  color: rgb(255, 255, 255);
+  padding: 4px 8px 4px 8px;
+  border-radius: 0px;
+}
+
+#workspaces button:hover {
+  background-color: rgba(45, 45, 45, 0.9);
+}
+
+#workspaces button.active {
+  color: rgb(255, 255, 255);
+  background-color: rgba(45, 45, 45, 0.9);
+}
+
+#clock {
+  padding: 4px 8px 4px 8px;
+}
+
+#clock:hover {
+  background-color: rgba(45, 45, 45, 0.9);
+}
+
+#pulseaudio {
+  padding: 4px 8px 4px 8px;
+}
+
+#pulseaudio:hover {
+  background-color: rgba(45, 45, 45, 0.9);
+}
+
+#tray {
+  padding: 4px 8px 4px 8px;
+}
+
+#custom-bluetooth {
+  padding: 4px 8px 4px 8px;
+}
+
+#custom-bluetooth:hover {
+  background-color: rgba(45, 45, 45, 0.9);
 }

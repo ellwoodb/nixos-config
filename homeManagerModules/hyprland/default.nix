@@ -7,6 +7,8 @@
     ./hyprpaper.nix
     ./hyprlock.nix
     ./hypridle.nix
-    ./walker.nix
+    ./swaync.nix
+    #./walker.nix
+    ./wofi.nix
   ];
 }

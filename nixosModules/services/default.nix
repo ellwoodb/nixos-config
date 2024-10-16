@@ -9,7 +9,7 @@
     ./docker.nix
     ./flatpak.nix
     ./java.nix
-    ./netbird.nix
+    ./nvfancontrol.nix
     ./nvidia.nix
     ./ollama.nix
     ./sops.nix

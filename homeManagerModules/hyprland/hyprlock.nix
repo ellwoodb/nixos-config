@@ -14,7 +14,7 @@
 
       background = [
         {
-          path = "/home/matthias/.dotfiles/wallpapers/blocks.png";
+          path = "../../wallpapers/mountains.jpg";
           blur_passes = 3;
           blur_size = 8;
         }

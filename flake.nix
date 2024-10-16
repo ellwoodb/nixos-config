@@ -38,7 +38,7 @@
 
     walker.url = "github:abenz1267/walker";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, nixpkgs-stable, walker, ... }@inputs:
@@ -64,7 +64,7 @@
             inputs.home-manager.nixosModules.default
             {
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.backupFileExtension = "back";
+              home-manager.backupFileExtension = "backup2";
             }
           ];
         };

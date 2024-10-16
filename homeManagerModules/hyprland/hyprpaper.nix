@@ -7,7 +7,7 @@
 
     settings =
       let
-        wallpaper = "/home/matthias/.dotfiles/wallpapers/blocks.png";
+        wallpaper = "../../wallpapers/mountains.jpg"; 
       in
       {
         ipc = "on";

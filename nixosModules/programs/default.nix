@@ -2,16 +2,15 @@
 
 {
   imports = [
-    ./cider
-    ./nh.nix
+    ./cider.nix
+    ./nautilus.nix
     ./pog.nix
+    ./stability-matrix.nix
     ./steam.nix
     ./vr.nix
     ./zsh.nix
   ];
 
   zsh.enable =
-    lib.mkDefault true;
-  nh.enable =
     lib.mkDefault true;
 }

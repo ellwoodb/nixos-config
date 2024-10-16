@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgs-stable, ... }:
+{ lib, inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -9,16 +9,19 @@
       inputs.sops-nix.nixosModules.sops
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # Enable modules
-  hyprland.enable = false;
+  hyprland.enable = true;
   gnome.enable = false;
   plasma.enable = true;
 
   cider.enable = true;
   steam.enable = true;
   vr.enable = true;
+  nautilus.enable = true;
+
+  stability-matrix.enable = true;
 
   coolercontrol.enable = true;
   docker.enable = true;
@@ -94,7 +97,6 @@
       isNormalUser = true;
       description = "matthias";
       extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "docker" "libvirtd" ];
-      packages = with pkgs-stable; [ orca-slicer ];
     };
   };
 
@@ -110,6 +112,8 @@
   # Allow unfree packages
   nixpkgs. config. allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
+
+  
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
@@ -166,7 +170,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = 1;
     __GL_THREADED_OPTIMIZATIONS = 0;
-    MOZ_ENABLE_WAYLAND = 0;
+    MOZ_ENABLE_WAYLAND = 1;
     FLAKE = "/home/matthias/.dotfiles";
   };
 

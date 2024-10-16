@@ -9,7 +9,7 @@
   config = lib.mkIf config.gnome.enable {
     services.xserver.desktopManager.gnome.enable = true;
     services.xserver.displayManager.gdm.enable = true;
-    services.xserver.displayManager.gdm.wayland = false;
+    services.xserver.displayManager.gdm.wayland = true;
     programs.dconf.enable = true;
 
     environment.systemPackages = with pkgs; [

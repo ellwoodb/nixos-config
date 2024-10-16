@@ -10,10 +10,13 @@
     environment.systemPackages = with pkgs; [
       cudatoolkit
       nvtopPackages.nvidia
+      tuxclocker
     ];
 
     hardware.graphics = {
       enable = true;
+      #driSupport = true;
+      #driSupport32Bit = true;
       enable32Bit = true;
     };
 
