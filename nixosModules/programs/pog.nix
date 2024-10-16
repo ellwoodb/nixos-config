@@ -1,4 +1,5 @@
-{ inputs, config, pkgs, lib, ... }:
+# Might move to pkgs later
+{ config, pkgs, lib, ... }:
 
 let
   version = "1.3.2";

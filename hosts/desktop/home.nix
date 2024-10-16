@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -37,13 +37,12 @@
   home.packages = with pkgs; [
     # Chats
     vesktop
-    #webcord-vencord
     element-desktop
+    fractal
 
     # Games / Compatability
     heroic
     prismlauncher
-    #(prismlauncher.override { withWaylandGLFW = true; jdks = [ temurin-bin-21 temurin-bin-8 temurin-bin-17 ]; })
     glfw-wayland-minecraft
     bottles
     protonplus
@@ -62,6 +61,7 @@
 
     # Terminals
     kitty
+    xpipe
 
     # Other
     filezilla
@@ -69,8 +69,6 @@
     uxplay
     blender
     nodejs
-    tigervnc
-    #davinci-resolve
     fastfetch
     qdirstat
     krita
@@ -78,21 +76,8 @@
     vlc
     hoppscotch
     xorg.xhost
-    rivalcfg
-    fd
-    ripgrep
-    nixd
     upscayl
-    inkscape
-    paprefs
     orca-slicer
-
-    distrobox
-    distrobox-tui
-
-    xpipe
-
-    fractal
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;

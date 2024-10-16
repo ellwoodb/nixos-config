@@ -20,8 +20,6 @@
 , wayland
 , x264
 , xorg
-, xvidcore
-, pkgs
 , SDL2
 }:
 stdenv.mkDerivation (finalAttrs: {

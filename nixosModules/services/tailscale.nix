@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 {
   options = {
@@ -15,6 +15,5 @@
         "--operator=matthias"
       ];
     };
-    #environment.systemPackages = with pkgs; [ ktailctl ]; # for KDE GUI
   };
 }

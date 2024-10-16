@@ -1,9 +1,8 @@
-{ inputs, config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 16;
@@ -160,7 +159,6 @@
       "$mainMod" = "SUPER";
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
-      #"$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
       "$runMenu" = "${pkgs.wofi}/bin/wofi --show drun";
 
       bind = [

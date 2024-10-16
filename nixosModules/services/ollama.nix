@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, pkgs-unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   options = {
@@ -13,7 +13,6 @@
       acceleration = "cuda";
       host = "0.0.0.0";
       port = 11434;
-      #listenAddress = "0.0.0.0:11434";
     };
   };
 }

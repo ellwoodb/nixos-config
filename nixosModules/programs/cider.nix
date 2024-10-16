@@ -1,4 +1,5 @@
-{ inputs, config, pkgs, lib, ... }:
+# Might move to pkgs later
+{ config, pkgs, lib, ... }:
 
 let
   cider = pkgs.appimageTools.wrapType2 {

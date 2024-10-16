@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib,  ... }:
+{ config, lib,  ... }:
 
 {
   options = {
@@ -10,10 +10,9 @@
     # enable docker
     virtualisation.docker = {
       enable = true;
-      #enableNvidia = true;
+      enableNvidia = true;
     };
 
-    #systemd.enableUnifiedCgroupHierarchy = false;
     hardware.nvidia-container-toolkit.enable = true;
   };
 }

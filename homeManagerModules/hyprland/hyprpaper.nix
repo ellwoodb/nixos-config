@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.hyprpaper = {
@@ -7,7 +7,7 @@
 
     settings =
       let
-        wallpaper = "../../wallpapers/mountains.jpg"; 
+        wallpaper = "/home/matthias/.dotfiles/wallpapers/mountains.jpg"; 
       in
       {
         ipc = "on";

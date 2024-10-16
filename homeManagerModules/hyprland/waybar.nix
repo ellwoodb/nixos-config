@@ -1,9 +1,8 @@
-{ inputs, config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.waybar = {
     enable = true;
-    #systemd.enable = true;
     settings = [
       {
         layer = "top";

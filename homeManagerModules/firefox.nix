@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, lib, ... }:
 
 {
   options = {
@@ -32,7 +32,7 @@
             };
           };
           extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-            #bitwarden
+            # Removed Bitwarden because of Updates not being applied, now installed manualy
             ublock-origin
             darkreader
             tabliss

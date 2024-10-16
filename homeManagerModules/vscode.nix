@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   options = {
@@ -28,26 +28,15 @@
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         jnoortheen.nix-ide
-
         tailscale.vscode-tailscale
         ms-vscode-remote.remote-ssh
-
         esbenp.prettier-vscode
         christian-kohler.path-intellisense
         visualstudioexptteam.vscodeintellicode
-        # NOT AVAILIABLE: sleistner.vscode-fileutils
-
         matthewpi.caddyfile-support
-
-        # NOT AVAILIABLE: miguelsolorio.symbols
-
         bradlc.vscode-tailwindcss
         svelte.svelte-vscode
-        # NOT AVAILIABLE: ardenivanov.svelte-intellisense
-        # NOT AVAILIABLE: chanzhaoyu.svelte-5-snippets
-
         dbaeumer.vscode-eslint
-        # NOT AVAILIABLE: rvest.vs-code-prettier-eslint
         pkief.material-icon-theme
         yoavbls.pretty-ts-errors
       ];

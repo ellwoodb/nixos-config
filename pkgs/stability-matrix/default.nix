@@ -2,8 +2,6 @@
   lib,
   appimageTools,
   fetchzip,
-  pkgs,
-  makeDesktopItem,
 }:
 
 let

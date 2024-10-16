@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ }:
 
 {
   imports = [
@@ -8,7 +8,6 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./swaync.nix
-    #./walker.nix
     ./wofi.nix
   ];
 }
