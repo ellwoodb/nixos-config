@@ -163,6 +163,12 @@
     ];
   };
   nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
 
   # Needed for modern games to run
   boot.kernel.sysctl."vm.max_map_count" = 262144;

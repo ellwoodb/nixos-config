@@ -64,7 +64,7 @@
             inputs.home-manager.nixosModules.default
             {
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.backupFileExtension = "backup2";
+              home-manager.backupFileExtension = "backup3";
             }
           ];
         };

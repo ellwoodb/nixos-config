@@ -77,7 +77,8 @@
     hoppscotch
     xorg.xhost
     upscayl
-    orca-slicer
+
+    distrobox
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;
